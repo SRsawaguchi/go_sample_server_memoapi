@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:9-alpine
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: memo_app
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./initdb/db:/docker-entrypoint-initdb.d
+
+  db-test:
+    image: postgres:9-alpine
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: memo_app_test
+    ports:
+      - "5433:5432"
